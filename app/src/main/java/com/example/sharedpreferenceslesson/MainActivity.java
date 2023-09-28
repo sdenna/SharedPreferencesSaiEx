@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         myEdit.putString("food", food.getText().toString());
         myEdit.apply();
 
-        Snackbar snackbar = Snackbar.make(mainLayout, "Info saved", Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(v, "Info saved", Snackbar.LENGTH_LONG);
         snackbar.show();
     }
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         age.setText(String.valueOf(a));
         food.setText(s2);
 
-        Snackbar snackbar = Snackbar.make(mainLayout, "Info retrieved", Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(v, "Info retrieved", Snackbar.LENGTH_LONG);
         snackbar.show();
     }
 }
