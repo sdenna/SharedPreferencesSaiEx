@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
     EditText name, age, food;
     ConstraintLayout mainLayout;
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor myEdit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,11 +28,12 @@ public class MainActivity extends AppCompatActivity {
         food = findViewById(R.id.editTextText3);
 
         mainLayout = findViewById(R.id.mainLayout);
+
+        sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        myEdit = sharedPreferences.edit();
     }
 
     protected void saveInfo(View v){
-        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-        SharedPreferences.Editor myEdit = sharedPreferences.edit();
 
         // write all the data entered by the user in SharedPreference and apply
         myEdit.putString("name", name.getText().toString());
@@ -48,10 +52,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void refreshInfo(View v) {
-        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-        String s1 = sh.getString("name", "");
-        int a = sh.getInt("age", 0);
-        String s2 = sh.getString("food", "");
+        String s1 = sharedPreferences.getString("name", "");
+        int a = sharedPreferences.getInt("age", 0);
+        String s2 = sharedPreferences.getString("food", "");
 
         name.setText(s1);
         age.setText(String.valueOf(a));
