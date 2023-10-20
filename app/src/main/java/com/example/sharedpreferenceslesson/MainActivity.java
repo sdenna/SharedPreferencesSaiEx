@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -33,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
         myEdit = sharedPreferences.edit();
     }
 
-    protected void saveInfo(View v){
+    public void saveInfo(View v){
+        Log.d("Sai", "point");
 
         // write all the data entered by the user in SharedPreference and apply
         myEdit.putString("name", name.getText().toString());
@@ -45,13 +47,13 @@ public class MainActivity extends AppCompatActivity {
         snackbar.show();
     }
 
-    protected void clearInfo(){
+    public void clearInfo(){
         name.setText("");
         age.setText("");
         food.setText("");
     }
 
-    protected void refreshInfo(View v) {
+    public void refreshInfo(View v) {
         String s1 = sharedPreferences.getString("name", "");
         int a = sharedPreferences.getInt("age", 0);
         String s2 = sharedPreferences.getString("food", "");
